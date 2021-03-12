@@ -45,7 +45,7 @@ make mk-upgrade
 * **ROOT_DIR** - full path to dir with *Makefile*
 * **MK_DIR** - fill path to *.mk-lib* dir
 * **DOCKER_COMPOSE** - docker-compose executable command
-* **DOCKER_COMPOSE_FILE** - docker-compose.yml file 
+* **DOCKER_COMPOSE_FILE** - docker-compose.yml file
 
 ## SAMPLES
 

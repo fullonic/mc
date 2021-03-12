@@ -18,7 +18,7 @@ test: check_env ## Execute tests. Pytest CLI parameters can be passed to 'addopt
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_TEST_FILE) run --rm test --addopts "$(addopts)"
 
 test/%: check_env ## Execute specific tests
-	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_TEST_FILE) run --rm test --addopts "$(addopts)" --test tests/$* 
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_TEST_FILE) run --rm test --addopts "$(addopts)" --test tests/$*
 stop: ## Stop all or c=<name> containers
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) stop $(c)
 
