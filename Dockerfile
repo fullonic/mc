@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED=1 \
 ENV PYTHONPATH=${PYTHONPATH}:${PWD}
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends curl -qy wait-for-it \
+    && apt-get install --no-install-recommends curl -qy wait-for-it gdal-bin \
     && rm -rf /var/lib/apt/list/*
 
 RUN pip install poetry

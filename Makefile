@@ -42,6 +42,9 @@ build: ## (re)Build all images or c=<name> containers
 build-test: check_env ## (re)Build test images
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_TEST_FILE) build
 
+shell: ## Start django shell
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) exec app python manage.py shell_plus
+
 manage/%: ## Execute manage commands
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) exec app python manage.py $*
 
