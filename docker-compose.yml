@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  db:
+    image: kartoza/postgis:13.0
+    env_file:
+      - .env
+    ports:
+      - 5423:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  app:
+    build:
+      context: .
+    image: mc:local
+    user: root
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/mc/
+    entrypoint:
+      - invoke
+      - wait-for
+      - db:5432
+      - migrate
+      - runserver
+      - --debug
+
+volumes:
+  postgres_data:
