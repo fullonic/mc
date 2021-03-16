@@ -2,7 +2,7 @@
 
 Defines some of the application models(all BaseModel subclasses), their possible
 relationships and some necessary method.
-Eventally will grow up while developing and implementing all the features currently
+Eventually will grow up while developing and implementing all the features currently
 defined here.
 
 NOTE: This document should be see as a database layout of what is foreseen necessary
@@ -52,9 +52,17 @@ class Club(BaseModel):
 
 class HunterProfile(BaseModel):
     user: User
+    name: str
     license_id: str
+    confirmed: bool
     club: Club
     region: Region
+
+    def confirm_profile(self):
+        list_ids = []
+        if self.license_id in list_ids:
+            return True
+        return False
 
 
 class HuntingLand(BaseModel):
@@ -104,15 +112,15 @@ class Alert(BaseModel):
     """Alert system to notify public in general.
 
     If a person is planning a new outdoor activity and wants to be notified in case of a new
-    hunting event submition in a particular area.
-    User can submit the interested by:
+    hunting event in a particular area.
+    User can submit the interested zone by:
         1. Draw a the area of interest (AOI) which will be treated as a polygon
         2. Submit the route (.gpx file) which will be treated as a LineString
     Once a new hunting zone is submitted, we will check if there is any entry on the alert
     system that meets one of the follow possibilities:
     1. The user routes is inside or intersects with the new created hunting area
     2. The AIO is inside or intersects
-    3. Finally, even the previous scenarios are false, check if the user security buffer
+    3. Finally, even the previous scenarios are false, we check if the user security buffer
     will be respected all the time
     """
 
